@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import pygame  
 import sys
 import random
@@ -72,3 +73,6 @@ while True: # cria o jogo
 
 pygame.quit()
 sys.exit()
+=======
+import pygame
+>>>>>>> 116ce6dca019944fd42e06ae23b0afd3e7875acc
