@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import pygame  
 import sys
 import random
@@ -21,6 +20,9 @@ bola_futebol = pygame.image.load('bolafut.jpg')
 bola_basquete = pygame.image.load('bolabasquete.png')
 bola_tenis = pygame.image.load('bolatenis.jpg')
 bola_futame =  pygame.image.load('bolafutame.jpg')
+sol = pygame.image.load('sol.png')
+arvore = pygame.image.load('arvore.png')
+grama = pygame.image.load('grama.jpg')
 
 RED = (255,0,0)
 GREEN = (0,255,0)
@@ -64,7 +66,11 @@ while True: # cria o jogo
     window.blit(bola_basquete,(x_basquete,y_inimigos))
     window.blit(bola_tenis,(x_tenis,y_inimigos + 150))
     window.blit(bola_futame,(x_futame,y_inimigos - 100))
-    
+    window.blit(sol,(550,0))
+    window.blit(arvore,(500,500))
+    window.blit(arvore,(100,500))
+    window.blit(grama,(0,600))
+
     pygame.draw.line(window,BLACK,[0,600],[800,600],5)   #linha 1
     pygame.draw.line(window,BLACK,[0,200],[800,200],5)   #linha 2
  
@@ -73,6 +79,6 @@ while True: # cria o jogo
 
 pygame.quit()
 sys.exit()
-=======
-import pygame
->>>>>>> 116ce6dca019944fd42e06ae23b0afd3e7875acc
+
+
+
