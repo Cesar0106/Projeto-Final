@@ -1,9 +1,15 @@
+#Bibliotecas importadas
 import pygame  
 import sys
 import random
+
+#Inicia o jogo
 pygame.init()
 
-relogio = pygame.time.Clock()
+#Criar relógio
+clock=pygame.time.Clock()
+
+
 
 
 x = 10 #posicao do x em pixel
@@ -16,6 +22,7 @@ x_futame = 800
 velocity = 10 #velocidade em pixels
 velocity_enemies = 15
 
+# Importando as imagens
 bola_futebol = pygame.image.load('bolafut.jpg')
 bola_basquete = pygame.image.load('bolabasquete.png')
 bola_tenis = pygame.image.load('bolatenis.jpg')
@@ -24,11 +31,13 @@ sol = pygame.image.load('sol.png')
 arvore = pygame.image.load('arvore.png')
 grama = pygame.image.load('grama.jpg')
 
+#Definindo as cores
 RED = (255,0,0)
 GREEN = (0,255,0)
 BLUE = (0,0,255)
 WHITE = (255,255,255)
 BLACK = (0,0,0)
+
 
 window = pygame.display.set_mode((700, 700)) # tamanho da janela
 pygame.display.set_caption('Joguinho das bolinhas') #nome que aparece na janela
@@ -40,6 +49,9 @@ while True: # cria o jogo
         if event.type == pygame.QUIT:
             game = False #desliga o jogo
             sys.exit()
+    deltat = clock.tick(40)
+    tempo += deltat
+    relogio = "{0}".format(tempo/1000)
 
     comandos = pygame.key.get_pressed()
     if comandos[pygame.K_UP] and y >=220: 
@@ -60,7 +72,7 @@ while True: # cria o jogo
     x_tenis -= velocity_enemies + random.randint(1,10) #velocidade aleatoria
     x_futame -= velocity_enemies + 12 #velocidade definida (é a bola mais rápida)
 
-    window.fill ((WHITE)) #janela azul
+    window.fill ((GREEN))#Fundo verde
 
     window.blit(bola_futebol,(x,y))      
     window.blit(bola_basquete,(x_basquete,y_inimigos))
@@ -70,6 +82,7 @@ while True: # cria o jogo
     window.blit(arvore,(500,500))
     window.blit(arvore,(100,500))
     window.blit(grama,(0,600))
+    window.blit(relogio, (100,100)) 
 
     pygame.draw.line(window,BLACK,[0,600],[800,600],5)   #linha 1
     pygame.draw.line(window,BLACK,[0,200],[800,200],5)   #linha 2
