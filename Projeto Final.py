@@ -15,21 +15,19 @@ clock=pygame.time.Clock()
 x = 10 #posicao do x em pixel
 y = 330 #posicao do y em pixel 
 y_inimigos = 330
-x_basquete = 800
-x_tenis = 800
-x_futame = 800
+x_robo = 800
+x_asteroide = 800
+x_nave = 800
 
 velocity = 10 #velocidade em pixels
 velocity_enemies = 15
 
 # Importando as imagens
-bola_futebol = pygame.image.load('bolafut.jpg')
-bola_basquete = pygame.image.load('bolabasquete.png')
-bola_tenis = pygame.image.load('bolatenis.jpg')
-bola_futame =  pygame.image.load('bolafutame.jpg')
-sol = pygame.image.load('sol.png')
-arvore = pygame.image.load('arvore.png')
-grama = pygame.image.load('grama.jpg')
+carinha = pygame.image.load('carinha.gif')
+trooper = pygame.image.load('robo.png')
+asteroide = pygame.image.load('asteroid.png')
+nave =  pygame.image.load('nave.png')
+fundo = pygame.image.load("fundo.jpg")
 
 #Definindo as cores
 RED = (255,0,0)
@@ -49,9 +47,7 @@ while True: # cria o jogo
         if event.type == pygame.QUIT:
             game = False #desliga o jogo
             sys.exit()
-    deltat = clock.tick(40)
-    tempo += deltat
-    relogio = "{0}".format(tempo/1000)
+
 
     comandos = pygame.key.get_pressed()
     if comandos[pygame.K_UP] and y >=220: 
@@ -63,32 +59,30 @@ while True: # cria o jogo
     if comandos[pygame.K_DOWN] and y <=520:
         y += velocity # ir pra baixo
 
-    if x_basquete <= -100 and x_tenis <= -100 and x_futame <= -100:
-        x_basquete = random.randint(800,2000) #bola de basquete aparece da direita para esquerda
-        x_tenis = random.randint(800,2000) #bola de tenis aparece da direita para esquerda
-        x_futame = random.randint(800,4000) #bola de futamericano aparece da direita para esquerda
+    if x_robo <= -100 and x_asteroide <= -100 and x_nave <= -100:
+        x_robo = random.randint(800,2000) #stormtrooper chegando da direita
+        x_asteroide = random.randint(800,2000) #asteroide chegando da direita
+        x_nave = random.randint(800,4000) #nave chegando da direita
 
-    x_basquete -= velocity_enemies + random.randint(1,10) #velocidade aleatoria
-    x_tenis -= velocity_enemies + random.randint(1,10) #velocidade aleatoria
-    x_futame -= velocity_enemies + 12 #velocidade definida (é a bola mais rápida)
+    x_robo -= velocity_enemies + random.randint(1,10) #velocidade aleatoria
+    x_asteroide -= velocity_enemies + random.randint(1,10) #velocidade aleatoria
+    x_nave -= velocity_enemies + 12 #velocidade definida (é a bola mais rápida)
 
-    window.fill ((GREEN))#Fundo verde
+    window.fill ((BLUE))#Fundo azul
+    window.blit(fundo,(0,0))
+    window.blit(carinha,(x,y))      
+    window.blit(trooper,(x_robo,y_inimigos))
+    window.blit(asteroide,(x_asteroide,y_inimigos + 150))
+    window.blit(nave,(x_nave,y_inimigos - 100))
 
-    window.blit(bola_futebol,(x,y))      
-    window.blit(bola_basquete,(x_basquete,y_inimigos))
-    window.blit(bola_tenis,(x_tenis,y_inimigos + 150))
-    window.blit(bola_futame,(x_futame,y_inimigos - 100))
-    window.blit(sol,(550,0))
-    window.blit(arvore,(500,500))
-    window.blit(arvore,(100,500))
-    window.blit(grama,(0,600))
-    window.blit(relogio, (100,100)) 
+    
+
 
     pygame.draw.line(window,BLACK,[0,600],[800,600],5)   #linha 1
     pygame.draw.line(window,BLACK,[0,200],[800,200],5)   #linha 2
  
     pygame.display.update()
-    relogio.tick(40)
+
 
 pygame.quit()
 sys.exit()
