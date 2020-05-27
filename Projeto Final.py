@@ -12,6 +12,7 @@ clock=pygame.time.Clock()
 
 
 
+
 x = 10 #posicao do x em pixel
 y = 330 #posicao do y em pixel 
 y_inimigos = 330
@@ -39,7 +40,7 @@ BLACK = (0,0,0)
 
 window = pygame.display.set_mode((700, 700)) # tamanho da janela
 pygame.display.set_caption('Joguinho das bolinhas') #nome que aparece na janela
-
+controle  = 0
 game = True
 while True: # cria o jogo
     pygame.time.delay(50)
@@ -48,6 +49,8 @@ while True: # cria o jogo
             game = False #desliga o jogo
             sys.exit()
 
+    controle+=1
+    print (controle)
 
     comandos = pygame.key.get_pressed()
     if comandos[pygame.K_UP] and y >=220: 
