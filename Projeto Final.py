@@ -9,10 +9,13 @@ pygame.init()
 #Criar relógio
 clock=pygame.time.Clock()
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> acd6813b645d498401fb92456d1fd45e18759102
 x = 10 #posicao do x em pixel
 y = 330 #posicao do y em pixel 
 y_inimigos = 330
