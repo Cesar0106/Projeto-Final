@@ -9,13 +9,6 @@ pygame.init()
 #Criar relógio
 clock=pygame.time.Clock()
 
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> acd6813b645d498401fb92456d1fd45e18759102
 x = 10 #posicao do x em pixel
 y = 330 #posicao do y em pixel 
 y_inimigos = 330
@@ -31,7 +24,7 @@ carinha = pygame.image.load('carinha.gif')
 trooper = pygame.image.load('robo.png')
 asteroide = pygame.image.load('asteroid.png')
 nave =  pygame.image.load('nave.png')
-fundo = pygame.image.load("fundo.jpg")
+fundo = pygame.image.load("fundo.jpeg")
 
 #Definindo as cores
 RED = (255,0,0)
