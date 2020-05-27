@@ -24,7 +24,10 @@ carinha = pygame.image.load('carinha.gif')
 trooper = pygame.image.load('robo.png')
 asteroide = pygame.image.load('asteroid.png')
 nave =  pygame.image.load('nave.png')
-fundo = pygame.image.load("fundo.jpeg")
+fundo = pygame.image.load("fundo.jpg")
+tela_inicio = pygame.image.load("inicio.jpg")
+tela_fim = pygame.image.load("over.jpg")
+
 
 #Definindo as cores
 RED = (255,0,0)
