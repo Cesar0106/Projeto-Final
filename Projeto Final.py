@@ -54,7 +54,7 @@ while True: # cria o jogo
         
 
     controle+=1
-    
+
 
     movimentos = pygame.key.get_pressed()
     if movimentos[pygame.K_UP] and y >=220: 
@@ -65,7 +65,15 @@ while True: # cria o jogo
         x += velocity #ir pra direita
     if movimentos[pygame.K_DOWN] and y <=520:
         y += velocity # ir pra baixo
+
+    if x + 30 > x_robo and y + 50 > y_robo and x < x_robo and y - 70 < y_robo:  #colisão com o robô
+        x = 2000
+    if x + 10 > x_asteroide and x - 10 < x_asteroide and y > y_asteroide:     #colisão com o asteroide
+        x = 2000       
+    if x + 10 > x_nave and y - 30 < y_nave:   #colisão com a nave espacial
+        x = 2000
     
+
     if x_robo <= -100:   
         x_robo = random.randint(800,2000) #stormtrooper chegando da direita
 
