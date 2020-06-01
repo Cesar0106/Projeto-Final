@@ -31,6 +31,9 @@ fundo = pygame.image.load("fundo.jpg")
 tela_inicio = pygame.image.load("inicio.jpg")
 tela_fim = pygame.image.load("over.jpg")
 
+#poe o audio no jogo
+audio_do_jogo = pygame.mixer.Sound('audio_jogo.wav')
+volume = audio_do_jogo.set_volume(0.4)
 
 #Definindo as cores
 RED = (255,0,0)
@@ -93,6 +96,7 @@ while True: # cria o jogo
     window.blit(trooper,(x_robo,y_robo))
     window.blit(asteroide,(x_asteroide,y_asteroide))
     window.blit(nave,(x_nave,y_nave))
+    audio_do_jogo.play()
 
     pygame.draw.line(window,BLACK,[0,600],[800,600],5)   #linha 1
     pygame.draw.line(window,BLACK,[0,200],[800,200],5)   #linha 2
