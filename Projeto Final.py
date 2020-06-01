@@ -18,6 +18,8 @@ x_robo = 800
 x_asteroide = 800
 x_nave = 800
 
+largura = 700
+altura = 700
 
 velocity = 10 #velocidade em pixels
 velocity_enemies = 15
@@ -45,22 +47,35 @@ BLUE = (0,0,255)
 WHITE = (255,255,255)
 BLACK = (0,0,0)
 
+#def text(msg,cor):
+    #text1=font.render(msg,True,cor)
+    #fundo.blit(text1, [largura/2,altura/2])
 
-window = pygame.display.set_mode((700, 700)) # tamanho da janela
+
+window = pygame.display.set_mode((largura, altura)) # tamanho da janela
 pygame.display.set_caption('Invasores de Petrópolis') #nome que aparece na janela
 controle  = 0
 game = True
-while True: # cria o jogo
+fimjogo = False
+while game: # cria o jogo
     pygame.time.delay(50)
+    while fimjogo:
+        window.blit(tela_fim,(0,0))
+        #fundo.fill(WHITE)
+        #texto("Game Over",BLACK)
+        pygame.display.update()
+        for event in pygame.event.get(): #evento
+            if event.type == pygame.QUIT:
+                game = False #desliga o jogo
+                fimjogo = False
+                
+
     for event in pygame.event.get(): #evento
         if event.type == pygame.QUIT:
             game = False #desliga o jogo
             sys.exit()
 
-        
-
     controle+=1
-
 
     movimentos = pygame.key.get_pressed()
     if movimentos[pygame.K_UP] and y >=220: 
@@ -73,6 +88,7 @@ while True: # cria o jogo
         y += velocity # ir pra baixo
 
     if x + 30 > x_robo and y + 50 > y_robo and x < x_robo and y - 70 < y_robo:  #colisão com o robô
+<<<<<<< HEAD
         x = 2000
         #audio_colisao.play()
         #audio_colisao.set_volume(0.01)
@@ -85,6 +101,13 @@ while True: # cria o jogo
         #audio_colisao.play()
         #audio_colisao.set_volume(0.01)
 
+=======
+        fimjogo = True
+    if x + 10 > x_asteroide and x - 10 < x_asteroide and y > y_asteroide:     #colisão com o asteroide
+        fimjogo = True       
+    if x + 10 > x_nave and y - 30 < y_nave:   #colisão com a nave espacial
+        fimjogo = True
+>>>>>>> 9f00410601bd5e21760c8229f783f68d6e36fffa
     
 
     if x_robo <= -100:   
