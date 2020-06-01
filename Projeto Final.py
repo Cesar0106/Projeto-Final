@@ -35,6 +35,9 @@ tela_fim = pygame.image.load("over.jpg")
 audio_do_jogo = pygame.mixer.Sound('audio_jogo.wav')
 volume = audio_do_jogo.set_volume(0.4)
 
+#audio_colisao = pygame.mixer.Sound('audio_colisao.wav')
+#volume_colusao = audio_colisao.set_volume(0.9)
+
 #Definindo as cores
 RED = (255,0,0)
 GREEN = (0,255,0)
@@ -71,10 +74,17 @@ while True: # cria o jogo
 
     if x + 30 > x_robo and y + 50 > y_robo and x < x_robo and y - 70 < y_robo:  #colisão com o robô
         x = 2000
+        #audio_colisao.play()
+        #audio_colisao.set_volume(0.01)
     if x + 10 > x_asteroide and x - 10 < x_asteroide and y > y_asteroide:     #colisão com o asteroide
-        x = 2000       
+        x = 2000     
+        #audio_colisao.play()  
+        #audio_colisao.set_volume(0.01)
     if x + 10 > x_nave and y - 30 < y_nave:   #colisão com a nave espacial
         x = 2000
+        #audio_colisao.play()
+        #audio_colisao.set_volume(0.01)
+
     
 
     if x_robo <= -100:   
