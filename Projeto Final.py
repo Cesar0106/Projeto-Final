@@ -40,7 +40,7 @@ tela_inicio = pygame.image.load("inicio.jpg")
 tela_fim = pygame.image.load("over.jpg")
 
 #poe o audio no jogo
-audio_do_jogo = pygame.mixer.Sound('audio_jogo.wav')
+audio_do_jogo = pygame.mixer.Sound('audioJogo.ogg')
 volume = audio_do_jogo.set_volume(0.4)
 
 #audio_colisao = pygame.mixer.Sound('audio_colisao.wav')
@@ -84,7 +84,6 @@ while game: # cria o jogo
     controle+= 1
 
     font = pygame.font.Font(pygame.font.get_default_font(), 25) # fonte para o texto do score (placar)
-    font_pause = pygame.font.Font(pygame.font.get_default_font(), 40) # fote para o texto do PAUSE
     texto = font.render('Placar: {0}'.format(controle), True, WHITE)
 
     movimentos = pygame.key.get_pressed()
