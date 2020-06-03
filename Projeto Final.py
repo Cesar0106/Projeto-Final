@@ -81,7 +81,11 @@ while game: # cria o jogo
             game = False #desliga o jogo
             sys.exit()
 
-    controle+=1
+    controle+= 1
+
+    font = pygame.font.Font(pygame.font.get_default_font(), 25) # fonte para o texto do score (placar)
+    font_pause = pygame.font.Font(pygame.font.get_default_font(), 40) # fote para o texto do PAUSE
+    texto = font.render('Placar: {0}'.format(controle), True, WHITE)
 
     movimentos = pygame.key.get_pressed()
     if movimentos[pygame.K_UP] and y >=220: 
@@ -136,6 +140,8 @@ while game: # cria o jogo
     window.blit(nave,(x_nave,y_nave))
     window.blit(dino,(x_dino,y_dino))
     window.blit(deathstar,(x_death,y_death))
+    window.blit(texto, (100, 100))
+
     audio_do_jogo.play()
 
     pygame.draw.line(window,BLACK,[0,600],[800,600],5)   #linha 1
