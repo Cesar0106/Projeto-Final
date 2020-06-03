@@ -17,6 +17,10 @@ y_nave = 230
 x_robo = 800
 x_asteroide = 800
 x_nave = 800
+x_dino = 550
+y_dino = 10
+x_death = 250
+y_death = 10
 
 largura = 700
 altura = 700
@@ -29,6 +33,8 @@ carinha = pygame.image.load('carinha.gif')
 trooper = pygame.image.load('robo.png')
 asteroide = pygame.image.load('asteroid.png')
 nave =  pygame.image.load('nave.png')
+deathstar = pygame.image.load('deathstar.png')
+dino = pygame.image.load('dinosaruo.png')
 fundo = pygame.image.load("fundo.jpg")
 tela_inicio = pygame.image.load("inicio.jpg")
 tela_fim = pygame.image.load("over.jpg")
@@ -110,9 +116,17 @@ while game: # cria o jogo
     if x_nave <= -100:
         x_nave = random.randint(800,4000) #nave chegando da direita
 
+    if y_death >= 900:
+        y_death = random.randint(-300,-100)  #deathstar chegando de cima
+
+    if y_dino >= 900:
+        y_dino = random.randint(-300,-100)   #dinossauro chegando de cima
+
     x_robo -= velocity_enemies + random.randint(1,10) #velocidade aleatoria
     x_asteroide -= velocity_enemies + random.randint(1,10) #velocidade aleatoria
     x_nave -= velocity_enemies + 12 #velocidade definida (é a bola mais rápida)
+    y_death += velocity_enemies + 3
+    y_dino += velocity_enemies + 15
 
     window.fill ((BLUE))#Fundo azul
     window.blit(fundo,(0,0))
@@ -120,6 +134,8 @@ while game: # cria o jogo
     window.blit(trooper,(x_robo,y_robo))
     window.blit(asteroide,(x_asteroide,y_asteroide))
     window.blit(nave,(x_nave,y_nave))
+    window.blit(dino,(x_dino,y_dino))
+    window.blit(deathstar,(x_death,y_death))
     audio_do_jogo.play()
 
     pygame.draw.line(window,BLACK,[0,600],[800,600],5)   #linha 1
