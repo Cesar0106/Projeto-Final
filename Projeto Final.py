@@ -21,8 +21,8 @@ x_nave = 800
 largura = 700
 altura = 700
 
-velocity = 10 #velocidade em pixels
-velocity_enemies = 15
+velocity = 20 #velocidade em pixels
+velocity_enemies = 30
 
 # Importando as imagens
 carinha = pygame.image.load('carinha.gif')
