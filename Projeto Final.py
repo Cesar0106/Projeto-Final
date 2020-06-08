@@ -43,8 +43,8 @@ tela_fim = pygame.image.load("over.jpg")
 audio_do_jogo = pygame.mixer.Sound('audioJogo.ogg')
 volume = audio_do_jogo.set_volume(0.4)
 
-#audio_colisao = pygame.mixer.Sound('audio_colisao.wav')
-#volume_colusao = audio_colisao.set_volume(0.9)
+audio_colisao = pygame.mixer.Sound('impact_audio.wav')
+volume_colusao = audio_colisao.set_volume(0.9)
 
 #Definindo as cores
 RED = (255,0,0)
@@ -67,8 +67,7 @@ while game: # cria o jogo
     pygame.time.delay(50)
     while fimjogo:
         window.blit(tela_fim,(0,0))
-        #fundo.fill(WHITE)
-        #texto("Game Over",BLACK)
+        audio_colisao.play()
         pygame.display.update()
         for event in pygame.event.get(): #evento
             if event.type == pygame.QUIT:
