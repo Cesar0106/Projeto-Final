@@ -83,7 +83,7 @@ while game: # cria o jogo
     controle+= 1
 
     font = pygame.font.Font(pygame.font.get_default_font(), 25) # fonte para o texto do score (placar)
-    texto = font.render('Placar: {0}'.format(controle), True, WHITE)
+    texto = font.render('Pontuação: {0}'.format(controle), True, WHITE)
 
     movimentos = pygame.key.get_pressed()
     if movimentos[pygame.K_UP] and y >=220: 
