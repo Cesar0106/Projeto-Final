@@ -96,18 +96,19 @@ while game: # cria o jogo
         y += velocity # ir pra baixo
 
     if x + 30 > x_robo and y + 50 > y_robo and x < x_robo and y - 70 < y_robo:  #colisão com o robô
-
         fimjogo = True
-        #audio_colisao.play()
-        #audio_colisao.set_volume(0.01)
+
     if x + 10 > x_asteroide and x - 10 < x_asteroide and y > y_asteroide:     #colisão com o asteroide
-        fimjogo = True     
-        #audio_colisao.play()  
-        #audio_colisao.set_volume(0.01)
+        fimjogo = True    
+
     if x + 10 > x_nave and y - 30 < y_nave:   #colisão com a nave espacial
         fimjogo = True
-        #audio_colisao.play()
-        #audio_colisao.set_volume(0.01)
+
+    if x + 10 > x_death and y < y_death and x - 5 < x_death:  #colisao com o cometa
+        fimdejogo = True
+
+    if x + 10 > x_dino and y < y_dino:  #colisao com o dinossauro
+        fimdejogo = True 
 
     if x_robo <= -100:   
         x_robo = random.randint(800,2000) #stormtrooper chegando da direita
