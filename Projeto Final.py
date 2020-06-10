@@ -17,10 +17,8 @@ y_nave = 230
 x_robo = 800
 x_asteroide = 800
 x_nave = 800
-x_dino = 550
-y_dino = 10
-x_death = 250
-y_death = 10
+x_death = 800
+y_death = 420
 
 largura = 700
 altura = 700
@@ -104,12 +102,8 @@ while game: # cria o jogo
     if x + 10 > x_nave and y - 30 < y_nave:   #colisão com a nave espacial
         fimjogo = True
 
-    if x + 10 > x_death and y < y_death and x - 5 < x_death:  #colisao com o cometa
-        fimdejogo = True
-
-    if x + 10 > x_dino and y < y_dino:  #colisao com o dinossauro
-        fimdejogo = True 
-
+#-----------------------------------------------------------------------------------------
+ 
     if x_robo <= -100:   
         x_robo = random.randint(800,2000) #stormtrooper chegando da direita
 
@@ -119,17 +113,15 @@ while game: # cria o jogo
     if x_nave <= -100:
         x_nave = random.randint(800,4000) #nave chegando da direita
 
-    if y_death >= 900:
-        y_death = random.randint(-300,-100)  #deathstar chegando de cima
+    if x_death <= -100:
+        x_death = random.randint(800,1000)  #deathstar chegando da direita (com mais frequencia)
 
-    if y_dino >= 900:
-        y_dino = random.randint(-300,-100)   #dinossauro chegando de cima
 
     x_robo -= velocity_enemies + random.randint(1,10) #velocidade aleatoria
     x_asteroide -= velocity_enemies + random.randint(1,10) #velocidade aleatoria
     x_nave -= velocity_enemies + 12 #velocidade definida (é a bola mais rápida)
-    y_death += velocity_enemies + 3
-    y_dino += velocity_enemies + 15
+    x_death -= velocity_enemies - 6
+
 
     window.fill ((BLUE))#Fundo azul
     window.blit(fundo,(0,0))
@@ -137,7 +129,6 @@ while game: # cria o jogo
     window.blit(trooper,(x_robo,y_robo))
     window.blit(asteroide,(x_asteroide,y_asteroide))
     window.blit(nave,(x_nave,y_nave))
-    window.blit(dino,(x_dino,y_dino))
     window.blit(deathstar,(x_death,y_death))
     window.blit(texto, (100, 100))
 
