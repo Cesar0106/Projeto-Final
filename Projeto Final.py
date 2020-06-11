@@ -32,7 +32,7 @@ trooper = pygame.image.load('robo.png')
 asteroide = pygame.image.load('asteroid.png')
 nave =  pygame.image.load('nave.png')
 deathstar = pygame.image.load('deathstar.png')
-dino = pygame.image.load('dinosaruo.png')
+#dino = pygame.image.load('dinosaruo.png')
 fundo = pygame.image.load("fundo.jpg")
 tela_inicio = pygame.image.load("inicio.jpg")
 tela_fim = pygame.image.load("over.jpg")
@@ -102,6 +102,8 @@ while game: # cria o jogo
     if x + 10 > x_nave and y - 30 < y_nave:   #colisão com a nave espacial
         fimjogo = True
 
+    if x + 10 > x_death and x - 10 < x_death and y + 25 > y_death and y - 25 < y_death: 
+        fimjogo = True
 #-----------------------------------------------------------------------------------------
  
     if x_robo <= -100:   
