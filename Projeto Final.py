@@ -17,8 +17,8 @@ y_nave = 230  #posicao inicial y da nave
 x_robo = 800  #posicao inicial x do robô
 x_asteroide = 800  #posicao inicial x do asteroide
 x_nave = 800  #posicao inicial x da nave
-x_death = 800  #posicao inicial x do cometa
-y_death = 420  #posicao inicial y do cometa
+x_death = 800  #posicao inicial x do cometaa
+y_death = 420  #posicao inicial y do cometaa
 
 def mover(movimentos):
     global x,y
@@ -31,8 +31,7 @@ def mover(movimentos):
     if movimentos[pygame.K_DOWN] and y <=520:
         y += velocity # ir pra baixo
 
-largura = 700
-altura = 700
+largura, altura = 700,700
 
 velocity = 20 #velocidade do jogador em pixels
 velocity_enemies = 30 #velocidade geral dos inimigos
