@@ -8,18 +8,20 @@ pygame.init()
 
 #Criar relógio
 clock=pygame.time.Clock()
+class inicio:
+    def __init__(self, a,b,c,d,e,f,g,h,i,j):
+        self.x = a  #posicao inicial x do jogador 
+        self.y = b  #posicao inicial y do jogador 
+        self.y_robo = c  #posicao inicial y do robô
+        self.y_asteroide = d  #posicao inicial y do asteroideinicio.
+        self.y_nave = e  #posicao inicial y da nave
+        self.x_robo = f  #posicao inicial x do robô
+        self.x_asteroide = g  #posicao inicial x do asteroide
+        self.x_nave = h  #posicao inicial x da nave
+        self.x_death = i  #posicao inicial x do cometa
+        self.y_death = j  #posicao inicial y do cometa
 
-x = 10 #posicao inicial x do jogador
-y = 330  #posicao inicial y do jogador 
-y_robo = 330  #posicao inicial y do robô
-y_asteroide = 480  #posicao inicial y do asteroide
-y_nave = 230  #posicao inicial y da nave
-x_robo = 800  #posicao inicial x do robô
-x_asteroide = 800  #posicao inicial x do asteroide
-x_nave = 800  #posicao inicial x da nave
-x_death = 800  #posicao inicial x do cometa
-y_death = 420  #posicao inicial y do cometa
-
+inicio= inicio(10,330,330,480,230,800,800,800,800,420)
 largura = 700
 altura = 700
 
@@ -37,11 +39,11 @@ tela_inicio = pygame.image.load("inicio.jpg")
 tela_fim = pygame.image.load("over.jpg")
 
 #poe o audio no jogo
-audio_do_jogo = pygame.mixer.Sound('audioJogo.ogg')
-volume = audio_do_jogo.set_volume(0.4)
+#audio_do_jogo = pygame.mixer.Sound('audioJogo.ogg')
+#volume = audio_do_jogo.set_volume(0.4)
 
-audio_colisao = pygame.mixer.Sound('impact_audio.wav')
-volume_colusao = audio_colisao.set_volume(0.9)
+#audio_colisao = pygame.mixer.Sound('impact_audio.wav')
+#volume_colusao = audio_colisao.set_volume(0.9)
 
 #Definindo algumas cores
 RED = (255,0,0)
@@ -59,7 +61,7 @@ while game: # cria o jogo
     pygame.time.delay(50)
     while fimjogo:
         window.blit(tela_fim,(0,0))
-        audio_colisao.play()
+        #audio_colisao.play()
         pygame.display.update()
         for event in pygame.event.get(): #evento
             if event.type == pygame.QUIT:
@@ -78,58 +80,58 @@ while game: # cria o jogo
     texto = font.render('Pontuação: {0}'.format(controle), True, WHITE)
 
     movimentos = pygame.key.get_pressed() #movimentos impedem que o jogador ultrapasse as 2 linhas
-    if movimentos[pygame.K_UP] and y >=220: 
-        y -= velocity # subir
-    if movimentos[pygame.K_LEFT] and x >= 0:
-        x -= velocity # ir pra esquerda
-    if movimentos[pygame.K_RIGHT] and x <= 600:
-        x += velocity #ir pra direita
-    if movimentos[pygame.K_DOWN] and y <=520:
-        y += velocity # ir pra baixo
+    if movimentos[pygame.K_UP] and inicio.y >=220: 
+        inicio.y -= velocity # subir
+    if movimentos[pygame.K_LEFT] and inicio.x >= 0:
+       inicio. x -= velocity # ir pra esquerda
+    if movimentos[pygame.K_RIGHT] and inicio.x <= 600:
+       inicio. x += velocity #ir pra direita
+    if movimentos[pygame.K_DOWN] and inicio.y <=520:
+        inicio.y += velocity # ir pra baixo
 
-    if x + 30 > x_robo and y + 50 > y_robo and x < x_robo and y - 70 < y_robo:  #colisão com o robô
+    if inicio.x + 30 > inicio.x_robo and inicio.y + 50 > inicio.y_robo and inicio.x < inicio.x_robo and inicio.y - 70 < inicio.y_robo:  #colisão com o robô
         fimjogo = True
 
-    if x + 10 > x_asteroide and x - 10 < x_asteroide and y > y_asteroide:     #colisão com o asteroide
+    if inicio.x + 10 > inicio.x_asteroide and inicio.x - 10 < inicio.x_asteroide and inicio.y > inicio.y_asteroide:     #colisão com o asteroide
         fimjogo = True    
 
-    if x + 10 > x_nave and y - 30 < y_nave:   #colisão com a nave espacial
+    if inicio.x + 10 > inicio.x_nave and inicio.y - 30 < inicio.y_nave:   #colisão com a nave espacial
         fimjogo = True
 
-    if x + 10 > x_death and x - 10 < x_death and y + 25 > y_death and y - 25 < y_death: #colisão com o cometa
+    if inicio.x + 10 > inicio.x_death and inicio.x - 10 < inicio.x_death and inicio.y + 25 > inicio.y_death and inicio.y - 25 < inicio.y_death: #colisão com o cometa
         fimjogo = True
 #-----------------------------------------------------------------------------------------
  
-    if x_robo <= -100:   
-        x_robo = random.randint(800,2000) #stormtrooper chegando da direita
+    if inicio.x_robo <= -100:   
+        inicio.x_robo = random.randint(800,2000) #stormtrooper chegando da direita
 
-    if x_asteroide <= -100:
-        x_asteroide = random.randint(800,2000) #asteroide chegando da direita
+    if inicio.x_asteroide <= -100:
+        inicio.x_asteroide = random.randint(800,2000) #asteroide chegando da direita
 
-    if x_nave <= -100:
-        x_nave = random.randint(800,4000) #nave chegando da direita
+    if inicio.x_nave <= -100:
+        inicio.x_nave = random.randint(800,4000) #nave chegando da direita
 
-    if x_death <= -100:
-        x_death = random.randint(800,1000)  #deathstar chegando da direita (com mais frequencia)
+    if inicio.x_death <= -100:
+       inicio.x_death = random.randint(800,1000)  #deathstar chegando da direita (com mais frequencia)
 
 
-    x_robo -= velocity_enemies + random.randint(1,10) #velocidade aleatoria
-    x_asteroide -= velocity_enemies + random.randint(1,10) #velocidade aleatoria
-    x_nave -= velocity_enemies + 12 #velocidade definida (é a bola mais rápida)
-    x_death -= velocity_enemies - 6 #velocidade do cometa é menor do que as outras
+    inicio.x_robo -= velocity_enemies + random.randint(1,10) #velocidade aleatoria
+    inicio.x_asteroide -= velocity_enemies + random.randint(1,10) #velocidade aleatoria
+    inicio.x_nave -= velocity_enemies + 12 #velocidade definida (é a bola mais rápida)
+    inicio.x_death -= velocity_enemies - 6 #velocidade do cometa é menor do que as outras
 
     #Põe os personagens no jogo
     window.fill ((BLUE))#Fundo azul
     window.blit(fundo,(0,0))
-    window.blit(carinha,(x,y))      
-    window.blit(trooper,(x_robo,y_robo))
-    window.blit(asteroide,(x_asteroide,y_asteroide))
-    window.blit(nave,(x_nave,y_nave))
-    window.blit(deathstar,(x_death,y_death))
+    window.blit(carinha,(inicio.x,inicio.y))      
+    window.blit(trooper,(inicio.x_robo,inicio.y_robo))
+    window.blit(asteroide,(inicio.x_asteroide,inicio.y_asteroide))
+    window.blit(nave,(inicio.x_nave,inicio.y_nave))
+    window.blit(deathstar,(inicio.x_death,inicio.y_death))
     window.blit(texto, (100, 100))
 
     #Põe o audio do jogo
-    audio_do_jogo.play()
+    #audio_do_jogo.play()
 
     pygame.draw.line(window,BLACK,[0,600],[800,600],5)   #linha 1
     pygame.draw.line(window,BLACK,[0,200],[800,200],5)   #linha 2
@@ -139,6 +141,3 @@ while game: # cria o jogo
 
 pygame.quit()
 sys.exit()
-
-
-
