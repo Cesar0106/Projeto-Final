@@ -17,11 +17,21 @@ y_nave = 230  #posicao inicial y da nave
 x_robo = 800  #posicao inicial x do robô
 x_asteroide = 800  #posicao inicial x do asteroide
 x_nave = 800  #posicao inicial x da nave
-x_death = 800  #posicao inicial x do cometa
-y_death = 420  #posicao inicial y do cometa
+x_death = 800  #posicao inicial x do cometaa
+y_death = 420  #posicao inicial y do cometaa
 
-largura = 700
-altura = 700
+def mover(movimentos):
+    global x,y
+    if movimentos[pygame.K_UP] and y >=220: 
+        y -= velocity # subir
+    if movimentos[pygame.K_LEFT] and x >= 0:
+        x -= velocity # ir pra esquerda
+    if movimentos[pygame.K_RIGHT] and x <= 600:
+        x += velocity #ir pra direita
+    if movimentos[pygame.K_DOWN] and y <=520:
+        y += velocity # ir pra baixo
+
+largura, altura = 700,700
 
 velocity = 20 #velocidade do jogador em pixels
 velocity_enemies = 30 #velocidade geral dos inimigos
@@ -78,14 +88,7 @@ while game: # cria o jogo
     texto = font.render('Pontuação: {0}'.format(controle), True, WHITE)
 
     movimentos = pygame.key.get_pressed() #movimentos impedem que o jogador ultrapasse as 2 linhas
-    if movimentos[pygame.K_UP] and y >=220: 
-        y -= velocity # subir
-    if movimentos[pygame.K_LEFT] and x >= 0:
-        x -= velocity # ir pra esquerda
-    if movimentos[pygame.K_RIGHT] and x <= 600:
-        x += velocity #ir pra direita
-    if movimentos[pygame.K_DOWN] and y <=520:
-        y += velocity # ir pra baixo
+    mover(movimentos)
 
     if x + 30 > x_robo and y + 50 > y_robo and x < x_robo and y - 70 < y_robo:  #colisão com o robô
         fimjogo = True
